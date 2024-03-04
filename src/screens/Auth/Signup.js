@@ -2,20 +2,46 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import bg from '../../../assets/bg.png'
 
-const Login = () => {
+const Signup = () => {
+  const [names, setNames] = useState('');
+  const [user, setUser] = useState('');
+  const [birthdate, setBirthdate] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
+  
+  // FALTA
 
-  const handleLogin = () => {
-    // Aquí iría la lógica para autenticar al usuario 
+  const handleSignup = () => {
+    console.log('Names:', names);
+    console.log('User:', user);
+    console.log('Birthdate:', birthdate);
     console.log('Email:', email);
     console.log('Contraseña:', password);
+    console.log('Contraseña2:', password2);
   };
 
   return (
     <ImageBackground source={bg} style={styles.background}>
     <View style={styles.container}>
-      <Text style={styles.title}>Iniciar sesión</Text>
+      <Text style={styles.title}>Registro</Text>
+
+      <TextInput
+        style={styles.input}
+        placeholder="Nombres"
+        value={names}
+        onChangeText={setNames}
+        keyboardType="names"
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Fecha de Nacimiento"
+        value={birthdate}
+        onChangeText={setBirthdate}
+        keyboardType="birthdate"
+        autoCapitalize="none"
+      />      
       <TextInput
         style={styles.input}
         placeholder="Correo electrónico"
@@ -31,11 +57,20 @@ const Login = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Text style={styles.title2}>¿Has olvidado la contraseña?</Text>
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Continuar</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Repetir Contraseña"
+        value={password2}
+        onChangeText={setPassword2}
+        secureTextEntry
+      />
+
+      <TouchableOpacity style={styles.button} onPress={handleSignup}>
+        <Text style={styles.buttonText}>Registrarse</Text>
       </TouchableOpacity>
-      <Text style={styles.title3}>¿No tienes una cuenta? Regístrate</Text>
+
+      <Text style={styles.title3}>¿Ya tienes cuenta? Inicia sesión</Text>
+
     </View>
     </ImageBackground>
   );
@@ -50,7 +85,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 70,
+    paddingVertical: 30,
     paddingHorizontal: 10,
     backgroundColor: "white",
     borderRadius: 50,
@@ -101,4 +136,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Signup;
