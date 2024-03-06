@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import bg from '../../../assets/bg.png'
 
-const Signup = () => {
+import { authStyles } from '../../components/AuthComponents/authStyles';
+
+const Signup = ({ navigation }) => {
+  
   const [names, setNames] = useState('');
   const [user, setUser] = useState('');
   const [birthdate, setBirthdate] = useState('');
@@ -22,118 +25,80 @@ const Signup = () => {
   };
 
   return (
-    <ImageBackground source={bg} style={styles.background}>
-    <View style={styles.container}>
-      <Text style={styles.title}>Registro</Text>
+    <ImageBackground source={bg} style={authStyles.background}>
+    <View style={authStyles.container2}>
+      <Text style={authStyles.title}>Registro</Text>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Nombres"
-        value={names}
-        onChangeText={setNames}
-        keyboardType="names"
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Fecha de Nacimiento"
-        value={birthdate}
-        onChangeText={setBirthdate}
-        keyboardType="birthdate"
-        autoCapitalize="none"
-      />      
-      <TextInput
-        style={styles.input}
-        placeholder="Correo electrónico"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Contraseña"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Repetir Contraseña"
-        value={password2}
-        onChangeText={setPassword2}
-        secureTextEntry
-      />
+      <View style={authStyles.inputContainer}>
+        <TextInput
+          style={authStyles.input}
+          placeholder="Nombres"
+          value={names}
+          onChangeText={setNames}
+          keyboardType="default"
+          autoCapitalize="none"
+        />
+      </View>
+      <View style={authStyles.inputContainer}>
+        <TextInput
+          style={authStyles.input}
+          placeholder="Usuario"
+          value={names}
+          onChangeText={setUser}
+          keyboardType="default"
+          autoCapitalize="none"
+        />
+      </View>
+      <View style={authStyles.inputContainer}>
+        <TextInput
+          style={authStyles.input}
+          placeholder="Fecha de Nacimiento"
+          value={birthdate}
+          onChangeText={setBirthdate}
+          keyboardType="default"
+          autoCapitalize="none"
+        />
+      </View>      
+      <View style={authStyles.inputContainer}>
+        <TextInput
+          style={authStyles.input}
+          placeholder="Correo electrónico"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+      </View>
+      <View style={authStyles.inputContainer}>
+        <TextInput
+          style={authStyles.input}
+          placeholder="Contraseña"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
+      </View>
+      <View style={authStyles.inputContainer}>
+        <TextInput
+          style={authStyles.input}
+          placeholder="Repetir Contraseña"
+          value={password}
+          onChangeText={setPassword2}
+          secureTextEntry
+        />
+      </View>
 
-      <TouchableOpacity style={styles.button} onPress={handleSignup}>
-        <Text style={styles.buttonText}>Registrarse</Text>
+      <TouchableOpacity style={authStyles.button} onPress={handleSignup}>
+        <Text style={authStyles.buttonText}>Registrarse</Text>
       </TouchableOpacity>
 
-      <Text style={styles.title3}>¿Ya tienes cuenta? Inicia sesión</Text>
+      <Text style={authStyles.title3}>¿Ya tienes cuenta?
+      <Text style={authStyles.boldText2} onPress={() => navigation.navigate('Login')}>  Inicia Sesión</Text>
+      </Text>
 
     </View>
     </ImageBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    resizeMode: 'cover', // O 'stretch', 'repeat', etc.
-    justifyContent: 'center',
-  },
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 30,
-    paddingHorizontal: 10,
-    backgroundColor: "white",
-    borderRadius: 50,
-    marginRight:20,
-    marginLeft:20
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-    color: "#333333",
-  },
-  title2: {
-    fontSize: 14,
-    marginBottom: 12,
-    marginStart: 10,
-    marginVertical: 15,
-    color: "#333333"
-  },
-  title3: {
-    fontSize: 14,
-    marginBottom: 5,
-    marginStart: 10,
-    marginVertical: 15,
-    color: "#333333"
-  },
-  input: {
-    width: 250,
-    height: 40,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginBottom: 15,
-  },
-  button: {
-    backgroundColor: '#333333',
-    width: 150,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 8,
-    marginTop: 10,
-    marginBottom:8
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-  },
-});
 
 export default Signup;

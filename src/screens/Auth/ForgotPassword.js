@@ -4,22 +4,23 @@ import bg from '../../../assets/bg.png'
 
 import { authStyles } from '../../components/AuthComponents/authStyles';
 
-const Login = ({ navigation }) => {
+const ForgotPassword = ({ navigation }) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
+  const handleForgotPassword = () => {
     // Aquí iría la lógica para autenticar al usuario 
     console.log('Email:', email);
-    console.log('Contraseña:', password);
   };
 
   return (
     <ImageBackground source={bg} style={authStyles.background}>
     <View style={authStyles.container}>
 
-      <Text style={authStyles.title}>Iniciar Sesión</Text>
+      <Text style={authStyles.title}>Recupera tu cuenta</Text>
+
+      <Text style={authStyles.title4}>Ingresa el correo electrónico asociado a tu cuenta.</Text>
 
       <View style={authStyles.inputContainer}>
         <TextInput
@@ -32,25 +33,11 @@ const Login = ({ navigation }) => {
         />
       </View>
 
-      <View style={authStyles.inputContainer}>
-        <TextInput
-          style={authStyles.input}
-          placeholder="Contraseña"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-      </View>
-
-      <Text style={[authStyles.title2, authStyles.boldText]} onPress={() => navigation.navigate('ForgotPassword')} >¿Has olvidado la contraseña?</Text>
-
-      <TouchableOpacity style={authStyles.button} onPress={handleLogin}>
-        <Text style={authStyles.buttonText}>Ingresar</Text>
+      <TouchableOpacity style={authStyles.button} onPress={handleForgotPassword}>
+        <Text style={authStyles.buttonText}>Enviar código</Text>
       </TouchableOpacity>
 
-      <Text style={authStyles.title3}>¿No tienes una cuenta?
-      <Text style={authStyles.boldText2} onPress={() => navigation.navigate('Signup')}>  Regístrate</Text>
-      </Text>
+      <Text style={[authStyles.title5, authStyles.boldText]} onPress={() => navigation.navigate('Login')}>Volver</Text>
 
     </View>
 
@@ -58,4 +45,4 @@ const Login = ({ navigation }) => {
   );
 };
 
-export default Login;
+export default ForgotPassword;
