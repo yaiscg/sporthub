@@ -1,7 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { loadCustomFonts } from '../../components/fonts';
-
-loadCustomFonts();
 
 export const authStyles = StyleSheet.create({
     background: {

@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import bg from '../../../assets/bg.png'
+import { useFonts } from 'expo-font';
 
 import { authStyles } from '../../components/AuthComponents/authStyles';
 
 const Login = ({ navigation }) => {
+
+  const [loaded] = useFonts({
+    'AlexLight': require('../../../assets/fonts/Alexandria-Light.ttf'),
+    'AlexRegular': require('../../../assets/fonts/Alexandria-Regular.ttf'),
+    'AlexBold': require('../../../assets/fonts/Alexandria-SemiBold.ttf')
+  });
+  
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
