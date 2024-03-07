@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground, StyleSheet  } from 'react-native';
 import bg from '../../../assets/bg.png'
 import { useFonts } from 'expo-font';
+
+import { Icon } from 'react-native-elements';
 
 import { authStyles } from '../../components/AuthComponents/authStyles';
 
 const Login = ({ navigation }) => {
 
   const [loaded] = useFonts({
-    'AlexLight': require('../../../assets/fonts/Alexandria-Light.ttf'),
     'AlexRegular': require('../../../assets/fonts/Alexandria-Regular.ttf'),
     'AlexBold': require('../../../assets/fonts/Alexandria-SemiBold.ttf')
   });
-  
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
     // Aquí iría la lógica para autenticar al usuario 
@@ -26,6 +27,7 @@ const Login = ({ navigation }) => {
   return (
     <ImageBackground source={bg} style={authStyles.background}>
     <View style={authStyles.container}>
+
 
       <Text style={authStyles.title}>Iniciar Sesión</Text>
 
@@ -40,16 +42,22 @@ const Login = ({ navigation }) => {
         />
       </View>
 
-      <View style={authStyles.inputContainer}>
-        <TextInput
-          style={authStyles.input}
-          placeholder="Contraseña"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-      </View>
-
+      <View style={authStyles.inputContainer2}>
+      <TextInput
+        style={authStyles.input2}
+        placeholder="Contraseña"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry={!showPassword}
+      />
+      <Icon color="#949494"
+        type="font-awesome"
+        name={showPassword ? "eye-slash" : "eye"}
+        onPress={() => setShowPassword(!showPassword)}
+        containerStyle={authStyles.icon}
+      />
+    </View>
+      
       <Text style={[authStyles.title2, authStyles.boldText]} onPress={() => navigation.navigate('ForgotPassword')} >¿Has olvidado la contraseña?</Text>
 
       <TouchableOpacity style={authStyles.button} onPress={handleLogin}>
@@ -65,5 +73,7 @@ const Login = ({ navigation }) => {
     </ImageBackground>
   );
 };
+
+
 
 export default Login;

@@ -6,6 +6,38 @@ export const authStyles = StyleSheet.create({
       resizeMode: 'cover', // O 'stretch', 'repeat', etc.
       justifyContent: 'center',
     },
+    inputContainer: {
+      borderBottomWidth: 1,
+      borderBottomColor: '#ccc',
+      marginBottom: 13,
+    },
+    inputContainer2: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      borderBottomWidth: 1,
+      borderColor: '#ccc',
+      marginBottom: 13,
+      marginRight:21,
+      marginLeft:21,
+    },
+    input2: {
+      width: 250,
+      height: 40,
+      flex: 1,
+      paddingHorizontal: 10,
+      marginBottom: 5,
+      fontSize: 15,
+    },
+    input: {
+      width: 250,
+      height: 40,
+      fontSize: 15,
+      paddingHorizontal: 10,
+      marginBottom: 5,
+    },
+    icon: {
+      marginRight:11
+    },
     container: {
       justifyContent: 'center',
       alignItems: 'center',
@@ -32,7 +64,6 @@ export const authStyles = StyleSheet.create({
       marginBottom: 15,
       color: "#333333",
       fontFamily: "AlexBold",
-      marginBottom:10
     },
     title2: {
       fontSize: 15,
@@ -81,18 +112,6 @@ export const authStyles = StyleSheet.create({
       color: 'white',
       fontSize: 15,
       fontFamily: "AlexRegular",
-    },
-    inputContainer: {
-      borderBottomWidth: 1,
-      borderBottomColor: '#ccc',
-      marginBottom: 13,
-    },
-    input: {
-      width: 250,
-      height: 40,
-      fontSize: 15,
-      paddingHorizontal: 10,
-      marginBottom: 5,
     },
     boldText: {
       fontWeight: "bold",
